@@ -1,0 +1,1 @@
+This jupyter notebook is about a dataset I found from Kaggle(link: https://www.kaggle.com/datasets/lsind18/euro-exchange-daily-rates-19992020 ), and I tried to do some visualizations using Seaborn library.
