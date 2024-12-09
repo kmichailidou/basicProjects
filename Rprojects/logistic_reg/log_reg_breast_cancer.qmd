@@ -1,0 +1,72 @@
+---
+title: "log_reg_breast_cancer"
+author: "Kiki Michailidou"
+format: html
+editor: visual
+---
+
+## Importing the libraries
+
+```{r}
+library(caret)
+library(caTools)
+library(ElemStatLearn)
+```
+
+## Importing the dataset
+
+```{r}
+dataset = read.csv("breast_cancer.csv")
+```
+
+## Encoding the target feature as factor
+
+```{r}
+# dataset$Class = factor(dataset$Class , levels = c(0, 1))
+dataset$Class = as.factor(as.numeric(dataset$Class))
+```
+
+## Splitting the dataset into the Training set and Test set
+
+```{r}
+set.seed(123)
+split = sample.split(dataset$Class , SplitRatio = 0.75)
+training_set = subset(dataset, split == TRUE)
+test_set = subset(dataset, split == FALSE)
+```
+
+## Feature Scailing
+
+```{r}
+training_set[-11] = scale(training_set[-11])
+test_set[-11] = scale(test_set[-11])
+```
+
+## Fitting classifier to the Training set
+
+```{r}
+classifier = glm(formula =  Class ~ .,
+                 family = binomial,
+                 data = training_set)
+```
+
+## Predicting the Test set results
+
+```{r}
+y_pred = predict(classifier, newdata = test_set[-11])
+```
+
+## Making the Confusion Matrix
+
+```{r}
+cm = table(test_set[, 11], y_pred > 0.5)
+```
+
+## K-fold Cross validation
+
+```{r}
+train_control <- trainControl(
+  method = "repeatedcv",
+  number = 10,
+  repeats = 3)
+```
