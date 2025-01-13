@@ -20,7 +20,7 @@ select * from absenteeism_at_work a
 left outer join compensation b 
 on a.ID = b.ID 
 left outer join reasons r
-on a.Reason_for_obsence = r.`Number`;
+on a.Reason_for_absence = r.`Number`;
 
 -- find the healthiest employees for the bonus 
 select * from absenteeism_at_work 

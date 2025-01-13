@@ -1,8 +1,6 @@
 This project is about population during 1950 until 2023
 The dataset is provided by Our World In Data 
-[link] : https://ourworldindata.org/population-growth 
-
-
+[link] : https://ourworldindata.org/population-growth  
 I anserwed questions such as: 
 - which countries heave the highest population growth in the last year?
 - which single country has the highest population decline in the last year? 
