@@ -51,4 +51,3 @@ order by x.dept_name, x.salary;
 
 
 
-
