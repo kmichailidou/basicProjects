@@ -4,4 +4,4 @@ I did an Exploratory Analysis Project using data from the [Inside Airbnb](https:
 - Availability and reviews 
 - Analysing trends over time-based on the last review
 
-Additionally, I created two machine learning models, in which Decision Tree Regressor has the best accuracy.  
+Additionally, I created a Decision Tree Regressor model that has an accuracy of 96%.  
