@@ -13,8 +13,6 @@ From Spotify to Airbnb analysis using a variety of tools like Python, R, SQL, an
 
 - 🥃 ***Final Assignment(Workearly Bootcamp)*** : [Click Here](https://github.com/kmichailidou/basicProjects/tree/main/final_assignment)
 
-- 🥦 ***Maven Market Analytics(Power BI)*** : [Click Here](https://github.com/kmichailidou/basicProjects/tree/main/powerbi)
-
 - ♪  ***Spotify Analysis(Python)*** : [Click Here](https://github.com/kmichailidou/basicProjects/tree/main/spotify_analysis)
 
 - 🛍️ ***Walmart Sales(Python)*** : [Click Here](https://github.com/kmichailidou/basicProjects/tree/main/walmart_sales)
