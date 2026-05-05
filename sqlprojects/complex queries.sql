@@ -49,5 +49,53 @@ and (e.salary = x.max_salary or e.salary = x.min_salary)
 order by x.dept_name, x.salary;
 */
 
+-- maximum salary by department  
+select e.*,
+max(salary) over(partition by dept_name) as max_salary
+from employee e;
+-- with over() we create a window of records
 
 
+-- fetch the first 2 employees from each department to join the company
+/*select e.*,
+row_number() over(partition by dept_name order by emp_id) as rn
+from employee e; */
+
+select * from 
+    (select e.*,
+    row_number() over(partition by dept_name order by emp_id) as rn
+    from employee e) x
+where x.rn < 3;
+
+
+-- fetch the top 3 employees in each department earning the maximum salary 
+select * from 
+    (select e.*,
+    rank() over(partition by dept_name order by salary desc) as rnk
+    from employee e) x
+where x.rnk < 4;
+
+
+-----
+select * from 
+    (select e.*,
+    rank() over(partition by dept_name order by salary desc) as rnk
+    dense_rank() over(partition by dept_name order by salary desc) as drnk
+    row() over(partition by dept_name order by salary desc) as rn
+    from employee e) x
+;
+
+-- fetch a query to display if the salary of an  employy is higher, lower or equal to the previous employee
+select e.*,
+lag(salary) over(partition by dept_name order by emp_id) as prev_emp_salary
+lead(salary) over(partition by dept_name order by emp_id) as next_emp_salary
+from employee e;
+
+
+select e.*,
+lag(salary) over(partition by dept_name order by emp_id) as prev_emp_salary
+case when e.salary > lag(salary) over(partition by dept_name order by emp_id) then 'Higher than previous employee'
+    when e.salary < lag(salary) over(partition by dept_name order by emp_id) then 'Lower than previous employee'
+    when e.salary = lag(salary) over(partition by dept_name order by emp_id) then 'Same as than previous employee'
+end sal_range
+from employee e;
